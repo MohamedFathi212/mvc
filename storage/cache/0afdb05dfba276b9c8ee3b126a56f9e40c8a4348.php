@@ -1,0 +1,1 @@
+<h1><?php echo e($name); ?></h1><?php /**PATH C:\laragon\www\pro_mvc\src\views/home.blade.php ENDPATH**/ ?>

@@ -1,0 +1,10 @@
+#!/usr/bin/env php
+<?php 
+
+require "vendor/autoload.php";
+
+use Dev\Mo\core\command;
+
+$command = new command($argv);
+
+echo $command->run();
