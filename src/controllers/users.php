@@ -6,18 +6,11 @@ use Dev\Mo\core\db;
 
 class users extends controller
 {
-    public function __construct()
+    public function register()
     {
-        session_start(); 
-        if (!empty($_SESSION["login"])) {
-            header("location: ../users/login");
-        }
+        return $this->view("register");
     }
-
-    public function login()
-    {
-        return $this->view("login");
-    }
+    
 
     public function store()
     {
@@ -32,16 +25,20 @@ class users extends controller
             'password' => $password
         ])->execute();
 
-        // header("location: login");
+        header("location: login");
     }
 
-    public function register()
+
+    public function login()
     {
-        return $this->view("register");
+        return $this->view("login");
     }
+
+
 
     public function loginRequest()
     {
+        session_start();
         $email = $_POST['email'];
         $password =$_POST['password']; 
         $users = new db('user');
@@ -51,11 +48,12 @@ class users extends controller
 
         if (!empty($data)) {
             $_SESSION['login'] = $data;
-            header("location: ../category/index");
+            header('location: ../category/index');
         } else {
-            header("location: login");
+            header('location: login');
         }
     }
+
 
     public function logout()
     {

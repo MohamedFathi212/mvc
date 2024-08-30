@@ -8,8 +8,8 @@ class category extends controller
 public function __construct()
     {
         session_start();
-        if(!empty($_SESSION["login"])){
-            header("location: ../users/login");
+        if(empty($_SESSION['login'])){
+            header('location: ../users/login');
         }
     }
 
